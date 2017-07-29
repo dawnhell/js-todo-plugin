@@ -1,0 +1,51 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Todo list</title>
+    <link rel="stylesheet" href="css/styles.css">
+  </head>
+  <body>
+    <h2>Todo list</h2>
+
+    <div class="todo container" >
+      <div class="overlay"></div>
+
+      <form>
+        <input class="task-input" type="text" name="task" placeholder="Enter task..." />
+        <input class="add-btn" type="button" value="Add" />
+        <h5 class="error-message">Enter task name</h5>
+      </form>
+
+      <div class="filter-btns">
+        <button class="all-filter active">All</button>
+        <button class="progress-filter">In progress</button>
+        <button class="done-filter">Done</button>
+      </div>
+
+      <div class="todo-list all"></div>
+
+      <div class="edit">
+        <h4>Edit task</h4>
+        <input type="text" class="edit-input">
+        <input type="button" class="save-btn" value="Save">
+        <input type="button" class="close-btn" value="X">
+        <h5 class="error-message">Enter new task name</h5>
+      </div>
+    </div>
+
+    <script src="libs/jquery.min.js"></script>
+
+    <!--Uncomment what is necessary-->
+
+    <script src="scripts/jQueryScript.js"></script>
+    <script>
+      $('.todo').TodoList();
+    </script>
+
+    <!--<script src="scripts/noJQueryScript.js"></script>-->
+    <!--<script>-->
+      <!--var todoList = new TodoList(document.querySelectorAll('.todo'));-->
+    <!--</script>-->
+  </body>
+</html>

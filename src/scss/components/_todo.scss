@@ -1,0 +1,289 @@
+@mixin btn {
+  color: white;
+  border: 1px solid lightblue;
+  background: #5882FA;
+  font-size: 20px;
+  transition: background .4s;
+
+  &:focus {
+    outline: none;
+  }
+
+  &:hover {
+    cursor: pointer;
+    background: #819FF7;
+  }
+}
+
+body {
+  text-align: center;
+  font-family: 'Helvetica', sans-serif;
+  color: #333;
+
+  h2 {
+    font-size: 32px;
+  }
+}
+
+.container {
+  max-width: 800px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 10px;
+  position: relative;
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+
+  form {
+    padding: 10px;
+    font-size: 0;
+    display: inline-block;
+
+    .task-input {
+      color: #333 ;
+      padding: 10px 20px;
+      font-size: 24px;
+      vertical-align: top;
+
+      &:focus {
+        outline: none;
+      }
+    }
+
+    .add-btn {
+      @include btn;
+      padding: 13px 40px;
+    }
+  }
+
+  .error-message {
+    font-size: 20px;
+    font-weight: normal;
+    margin: 0;
+    padding: 10px 20px 0;
+    color: orangered;
+    display: none;
+  }
+
+  .filter-btns {
+    padding-top: 20px;
+
+    button {
+      @include btn;
+      padding: 10px 20px;
+
+      &.active {
+        background: #819FF7;
+        text-decoration: underline;
+      }
+    }
+  }
+
+  .todo-list {
+    position: relative;
+
+    &.all .task.done-task,
+    &.all .task.progress-task{
+      display: block;
+    }
+
+    &.done .task.done-task {
+      display: block;
+    }
+
+    &.progress .task.progress-task {
+      display: block;
+    }
+
+    .task {
+      margin: 20px auto 0;
+      background: #F2F2F2;
+      padding: 10px;
+      overflow: hidden;
+      width: 60%;
+      display: none;
+
+      &.progress-task {
+        p {
+          text-decoration: none;
+        }
+
+        .edit-btn {
+          cursor: pointer;
+          color: #A4A4A4;
+
+          &:hover {
+            color: #5882FA;
+          }
+        }
+
+        .done-icon {
+          background-image: url('../images/done-faded.png');
+        }
+
+        .done-icon:hover {
+          background-image: url('../images/done-active.png');
+        }
+      }
+
+      &.done-task {
+        p {
+          text-decoration: line-through;
+        }
+
+        .edit-btn {
+          cursor: not-allowed;
+
+          &:hover {
+            color: #A4A4A4;
+          }
+        }
+
+        .done-icon {
+          background-image: url('../images/done-active.png');
+        }
+
+        .done-icon:hover {
+          background-image: url('../images/done-faded.png');
+        }
+      }
+
+      * {
+        -webkit-box-sizing: border-box;
+           -moz-box-sizing: border-box;
+                box-sizing: border-box;
+      }
+
+      p {
+        margin: 0;
+        width: 60%;
+        float: left;
+        overflow-x: auto;
+        font-size: 24px;
+      }
+
+      .edit-btn,
+      .remove-btn {
+        color: #A4A4A4;
+        cursor: pointer;
+        background: none;
+        border: none;
+        float: left;
+        transition: color .4s;
+        font-size: 18px;
+
+        &:hover {
+          color: #5882FA;
+        }
+
+        &:active,
+        &:focus {
+          outline: none;
+        }
+      }
+
+      .edit-btn {
+        padding: 5px 0 0 40px;
+      }
+
+      .remove-btn {
+        font-weight: bold;
+        font-size: 24px;
+        padding: 1px 0 0 35px;
+      }
+
+      .done-icon {
+        float: left;
+        width: 5%;
+        cursor: pointer;
+        margin-left: 10px;
+        margin-right: 20px;
+        margin-top: 3px;
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        transition: background .4s;
+
+        &:before {
+          content: '';
+          display: block;
+          width: 100%;
+          padding-top: 100%;
+        }
+      }
+    }
+  }
+
+  .edit {
+    display: none;
+    position: absolute;
+    background: #eee;
+    border: 1px solid #aaa;
+    top: 10%;
+    width: 50%;
+    margin: 0 calc(25% - 40px);
+    padding: 0 40px 40px;
+    -webkit-box-shadow: 0 0 100px #333;
+       -moz-box-shadow: 0 0 100px #333;
+            box-shadow: 0 0 100px #333;
+    z-index: 101;
+
+    &.active {
+      display: block;
+    }
+
+    .edit-input {
+      padding: 10px 15px;
+      font-size: 20px;
+
+      &:focus {
+        outline: none;
+      }
+    }
+
+    h4 {
+      margin: 0;
+      font-size: 22px;
+      font-weight: normal;
+      padding: 30px 0 20px;
+    }
+
+    .save-btn {
+      @include btn;
+      padding: 11px 15px;
+    }
+
+    .close-btn {
+      position: absolute;
+      font-size: 24px;
+      font-weight: bold;
+      color: #aaa;
+      top: 10px;
+      right: 10px;
+      border: none;
+      cursor: pointer;
+      background: none;
+
+      &:hover {
+        color: #ccc;
+      }
+    }
+  }
+
+  .overlay {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    background: #333;
+    opacity: 0.5;
+    display: none;
+
+    &.active {
+      display: block;
+    }
+  }
+}
