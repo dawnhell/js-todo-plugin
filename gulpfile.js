@@ -1,14 +1,8 @@
 var gulp        = require('gulp');
 var sass        = require('gulp-sass');
 var concat      = require('gulp-concat');
-var clean       = require('gulp-clean');
 var uglify      = require('gulp-uglify');
 var runSequence = require('run-sequence');
-
-gulp.task('clean', function() {
-  // return gulp.src(['build/css', 'build/scripts', 'build/images'], { read: false })
-    // .pipe(clean());
-});
 
 gulp.task('libs', function() {
   return gulp.src('node_modules/jquery/dist/jquery.min.js')
@@ -34,8 +28,6 @@ gulp.task('sass', function() {
 
 gulp.task('scripts', function() {
   return gulp.src('src/scripts/**/*.js')
-    // .pipe(concat('scripts.js'))
-    // .pipe(uglify())
     .pipe(gulp.dest('build/scripts'));
 });
 
@@ -45,7 +37,7 @@ gulp.task('watch', ['html', 'sass', 'scripts', 'images'], function() {
   gulp.watch('src/scripts/**/*.js', ['scripts']);
 });
 
-gulp.task('build', ['clean'], function() {
+gulp.task('build', function() {
   runSequence('libs','html', 'sass', 'scripts', 'images');
 });
 
