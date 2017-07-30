@@ -14,13 +14,11 @@
     this.formErrorMessage   = this.formBlock    .querySelector('.error-message');
     this.addButton          = this.todoContainer.querySelector('.add-btn');
     this.taskInput          = this.todoContainer.querySelector('.task-input');
-    this.todoList           = this.todoContainer.querySelector('.todo-list');
     this.editBlock          = this.todoContainer.querySelector('.edit');
     this.editErrorMessage   = this.editBlock    .querySelector('.error-message');
     this.editInput          = this.todoContainer.querySelector('.edit .edit-input');
     this.saveButton         = this.todoContainer.querySelector('.edit .save-btn');
     this.closeButton        = this.todoContainer.querySelector('.edit .close-btn');
-    this.overlay            = this.todoContainer.querySelector('.overlay');
     this.filterBlock        = this.todoContainer.querySelector('.filter-btns');
     this.filterButtons      = this.filterBlock  .querySelectorAll('button');
     this.isStorageAvailable = true;
@@ -32,6 +30,17 @@
   };
 
   TodoListModule.prototype.init = function() {
+    var overlay  = document.createElement('div');
+    var todoList = document.createElement('div');
+    overlay .className = 'overlay';
+    todoList.className = 'todo-list all';
+
+    this.todoContainer.insertBefore(overlay, this.formBlock);
+    this.todoContainer.insertBefore(todoList, this.editBlock);
+
+    this.todoList = this.todoContainer.querySelector('.todo-list');
+    this.overlay  = this.todoContainer.querySelector('.overlay');
+
     this.getDataFromStorage();
     this.renderTasksList();
     this.bindEvents();
@@ -242,6 +251,7 @@
     } else {
       this.editErrorMessage.style.display = 'none';
 
+      this.tasksArray[this.findCurrentIndex(this.tasksArray, this.currentItem.getAttribute('data-id'))].name = inputValue;
       this.currentItem.name = inputValue;
 
       if (this.isStorageAvailable) {

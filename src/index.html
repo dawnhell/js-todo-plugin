@@ -8,9 +8,7 @@
   <body>
     <h2>Todo list</h2>
 
-    <div class="todo container" >
-      <div class="overlay"></div>
-
+    <div class="todo container">
       <form>
         <input class="task-input" type="text" name="task" placeholder="Enter task..." />
         <input class="add-btn" type="button" value="Add" />
@@ -22,8 +20,6 @@
         <button class="progress-filter">In progress</button>
         <button class="done-filter">Done</button>
       </div>
-
-      <div class="todo-list all"></div>
 
       <div class="edit">
         <h4>Edit task</h4>
@@ -38,14 +34,14 @@
 
     <!--Uncomment what is necessary-->
 
-    <script src="scripts/jQueryScript.js"></script>
-    <script>
-      $('.todo').TodoList();
-    </script>
-
-    <!--<script src="scripts/noJQueryScript.js"></script>-->
+    <!--<script src="scripts/jQueryScript.js"></script>-->
     <!--<script>-->
-      <!--var todoList = new TodoList(document.querySelectorAll('.todo'));-->
+      <!--$('.todo').TodoList();-->
     <!--</script>-->
+
+    <script src="scripts/noJQueryScript.js"></script>
+    <script>
+      new TodoList(document.querySelectorAll('.todo'));
+    </script>
   </body>
 </html>

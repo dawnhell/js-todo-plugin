@@ -13,13 +13,11 @@
     this.$formErrorMessage  = this.$formBlock    .find('.error-message');
     this.$addButton         = this.$todoContainer.find('.add-btn');
     this.$taskInput         = this.$todoContainer.find('.task-input');
-    this.$todoList          = this.$todoContainer.find('.todo-list');
     this.$editBlock         = this.$todoContainer.find('.edit');
     this.$editErrorMessage  = this.$editBlock    .find('.error-message');
     this.$editInput         = this.$todoContainer.find('.edit .edit-input');
     this.$saveButton        = this.$todoContainer.find('.edit .save-btn');
     this.$closeButton       = this.$todoContainer.find('.edit .close-btn');
-    this.$overlay           = this.$todoContainer.find('.overlay');
     this.$filterBlock       = this.$todoContainer.find('.filter-btns');
     this.$filterButtons     = this.$filterBlock  .find('button');
     this.isStorageAvailable = true;
@@ -31,6 +29,11 @@
   };
 
   TodoList.prototype.init = function() {
+    this.$todoContainer.prepend('<div class="overlay"></div>');
+    this.$formBlock.after('<div class="todo-list all"></div>');
+    this.$todoList = this.$todoContainer.find('.todo-list');
+    this.$overlay  = this.$todoContainer.find('.overlay');
+
     this.getDataFromStorage();
     this.renderTasksList();
     this.bindEvents();
@@ -206,6 +209,7 @@
     } else {
       this.$editErrorMessage.css('display', 'none');
 
+      this.tasksArray[this.findCurrentIndex(this.tasksArray, this.currentItem.data('id'))].name = inputValue;
       this.currentItem.name = inputValue;
 
       if (this.isStorageAvailable) {
