@@ -8,7 +8,7 @@
   };
 
   var TodoList = function(container, index) {
-    this.$todoContainer     = $(container);//inside .each() container is a DOM element, not jQuery!!!!!!!!
+    this.$todoContainer     = $(container);
     this.$formBlock         = this.$todoContainer.find('form');
     this.$formErrorMessage  = this.$formBlock    .find('.error-message');
     this.$addButton         = this.$todoContainer.find('.add-btn');

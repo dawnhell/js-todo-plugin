@@ -3,12 +3,13 @@
   "version": "1.0.0",
   "main": "index.js",
   "author": "Vladislav Klochkov",
-  "license": "Vladislav Klochkov",
+  "license": "MIT",
   "dependencies": {
     "jquery": "^3.2.1"
   },
   "devDependencies": {
     "gulp": "^3.9.1",
+    "gulp-clean": "^0.3.2",
     "gulp-concat": "^2.6.1",
     "gulp-sass": "^3.1.0",
     "gulp-uglify": "^3.0.0",
