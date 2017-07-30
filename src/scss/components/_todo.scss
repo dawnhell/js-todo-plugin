@@ -1,24 +1,25 @@
 @mixin btn {
-  color: white;
-  border: 1px solid lightblue;
-  background: #5882FA;
+  color: #eff4ff;
+  background: #2d89ef;
+  border: 1px solid #2d89ef;
   font-size: 20px;
-  transition: background .4s;
+  transition: background .4s, border .4s;
 
   &:focus {
     outline: none;
   }
 
   &:hover {
+    background: #2b5797;
+    border: 1px solid #2b5797;
     cursor: pointer;
-    background: #819FF7;
   }
 }
 
 body {
   text-align: center;
   font-family: 'Helvetica', sans-serif;
-  color: #333;
+  color: #1d1d1d;
 
   h2 {
     font-size: 32px;
@@ -27,13 +28,16 @@ body {
 
 .container {
   max-width: 800px;
-  width: 100%;
   margin: 0 auto;
+  width: 100%;
   padding: 0 10px;
   position: relative;
   -webkit-box-sizing: border-box;
      -moz-box-sizing: border-box;
           box-sizing: border-box;
+}
+
+.todo {
 
   form {
     padding: 10px;
@@ -41,10 +45,9 @@ body {
     display: inline-block;
 
     .task-input {
-      color: #333 ;
-      padding: 10px 20px;
-      font-size: 24px;
-      vertical-align: top;
+      color: #1d1d1d;
+      padding: 12px 20px;
+      font-size: 20px;
 
       &:focus {
         outline: none;
@@ -68,14 +71,26 @@ body {
 
   .filter-btns {
     padding-top: 20px;
+    font-size: 0;
 
     button {
       @include btn;
       padding: 10px 20px;
+      background: #eff4ff;
+      border: 1px solid #eff4ff;
+      color: #1d1d1d;
+      margin: 0 5px;
+
+      &:hover {
+        background: #2d89ef;
+        border: 1px solid #2d89ef;
+        color: #eff4ff;
+      }
 
       &.active {
-        background: #819FF7;
-        text-decoration: underline;
+        background: #2d89ef;
+        border: 1px solid #2d89ef;
+        color: #eff4ff;
       }
     }
   }
@@ -98,7 +113,7 @@ body {
 
     .task {
       margin: 20px auto 0;
-      background: #F2F2F2;
+      background: #eff4ff;
       padding: 10px;
       overflow: hidden;
       width: 60%;
@@ -111,10 +126,10 @@ body {
 
         .edit-btn {
           cursor: pointer;
-          color: #A4A4A4;
+          color: #a4a4a4;
 
           &:hover {
-            color: #5882FA;
+            color: #2d89ef;
           }
         }
 
@@ -136,7 +151,7 @@ body {
           cursor: not-allowed;
 
           &:hover {
-            color: #A4A4A4;
+            color: #a4a4a4;
           }
         }
 
@@ -151,8 +166,8 @@ body {
 
       * {
         -webkit-box-sizing: border-box;
-           -moz-box-sizing: border-box;
-                box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
       }
 
       p {
@@ -220,13 +235,14 @@ body {
     position: absolute;
     background: #eee;
     border: 1px solid #aaa;
+    font-size: 0;
     top: 10%;
     width: 50%;
     margin: 0 calc(25% - 40px);
     padding: 0 40px 40px;
-    -webkit-box-shadow: 0 0 100px #333;
-       -moz-box-shadow: 0 0 100px #333;
-            box-shadow: 0 0 100px #333;
+    -webkit-box-shadow: 0 0 100px #1d1d1d;
+    -moz-box-shadow: 0 0 100px #1d1d1d;
+    box-shadow: 0 0 100px #1d1d1d;
     z-index: 101;
 
     &.active {
@@ -264,9 +280,10 @@ body {
       border: none;
       cursor: pointer;
       background: none;
+      transition: color .4s;
 
       &:hover {
-        color: #ccc;
+        color: #2d89ef;
       }
     }
   }
@@ -278,7 +295,7 @@ body {
     top: 0;
     left: 0;
     z-index: 100;
-    background: #333;
+    background: #1d1d1d;
     opacity: 0.5;
     display: none;
 

@@ -392,209 +392,229 @@ template {
 body {
   text-align: center;
   font-family: 'Helvetica', sans-serif;
-  color: #333; }
+  color: #1d1d1d; }
   body h2 {
     font-size: 32px; }
 
 .container {
   max-width: 800px;
-  width: 100%;
   margin: 0 auto;
+  width: 100%;
   padding: 0 10px;
   position: relative;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box; }
-  .container form {
-    padding: 10px;
-    font-size: 0;
-    display: inline-block; }
-    .container form .task-input {
-      color: #333;
-      padding: 10px 20px;
-      font-size: 24px;
-      vertical-align: top; }
-      .container form .task-input:focus {
-        outline: none; }
-    .container form .add-btn {
-      color: white;
-      border: 1px solid lightblue;
-      background: #5882FA;
-      font-size: 20px;
-      transition: background .4s;
-      padding: 13px 40px; }
-      .container form .add-btn:focus {
-        outline: none; }
-      .container form .add-btn:hover {
-        cursor: pointer;
-        background: #819FF7; }
-  .container .error-message {
+
+.todo form {
+  padding: 10px;
+  font-size: 0;
+  display: inline-block; }
+  .todo form .task-input {
+    color: #1d1d1d;
+    padding: 12px 20px;
+    font-size: 20px; }
+    .todo form .task-input:focus {
+      outline: none; }
+  .todo form .add-btn {
+    color: #eff4ff;
+    background: #2d89ef;
+    border: 1px solid #2d89ef;
     font-size: 20px;
-    font-weight: normal;
-    margin: 0;
-    padding: 10px 20px 0;
-    color: orangered;
+    transition: background .4s, border .4s;
+    padding: 13px 40px; }
+    .todo form .add-btn:focus {
+      outline: none; }
+    .todo form .add-btn:hover {
+      background: #2b5797;
+      border: 1px solid #2b5797;
+      cursor: pointer; }
+
+.todo .error-message {
+  font-size: 20px;
+  font-weight: normal;
+  margin: 0;
+  padding: 10px 20px 0;
+  color: orangered;
+  display: none; }
+
+.todo .filter-btns {
+  padding-top: 20px;
+  font-size: 0; }
+  .todo .filter-btns button {
+    color: #eff4ff;
+    background: #2d89ef;
+    border: 1px solid #2d89ef;
+    font-size: 20px;
+    transition: background .4s, border .4s;
+    padding: 10px 20px;
+    background: #eff4ff;
+    border: 1px solid #eff4ff;
+    color: #1d1d1d;
+    margin: 0 5px; }
+    .todo .filter-btns button:focus {
+      outline: none; }
+    .todo .filter-btns button:hover {
+      background: #2b5797;
+      border: 1px solid #2b5797;
+      cursor: pointer; }
+    .todo .filter-btns button:hover {
+      background: #2d89ef;
+      border: 1px solid #2d89ef;
+      color: #eff4ff; }
+    .todo .filter-btns button.active {
+      background: #2d89ef;
+      border: 1px solid #2d89ef;
+      color: #eff4ff; }
+
+.todo .todo-list {
+  position: relative; }
+  .todo .todo-list.all .task.done-task,
+  .todo .todo-list.all .task.progress-task {
+    display: block; }
+  .todo .todo-list.done .task.done-task {
+    display: block; }
+  .todo .todo-list.progress .task.progress-task {
+    display: block; }
+  .todo .todo-list .task {
+    margin: 20px auto 0;
+    background: #eff4ff;
+    padding: 10px;
+    overflow: hidden;
+    width: 60%;
     display: none; }
-  .container .filter-btns {
-    padding-top: 20px; }
-    .container .filter-btns button {
-      color: white;
-      border: 1px solid lightblue;
-      background: #5882FA;
-      font-size: 20px;
-      transition: background .4s;
-      padding: 10px 20px; }
-      .container .filter-btns button:focus {
-        outline: none; }
-      .container .filter-btns button:hover {
-        cursor: pointer;
-        background: #819FF7; }
-      .container .filter-btns button.active {
-        background: #819FF7;
-        text-decoration: underline; }
-  .container .todo-list {
-    position: relative; }
-    .container .todo-list.all .task.done-task,
-    .container .todo-list.all .task.progress-task {
-      display: block; }
-    .container .todo-list.done .task.done-task {
-      display: block; }
-    .container .todo-list.progress .task.progress-task {
-      display: block; }
-    .container .todo-list .task {
-      margin: 20px auto 0;
-      background: #F2F2F2;
-      padding: 10px;
-      overflow: hidden;
-      width: 60%;
-      display: none; }
-      .container .todo-list .task.progress-task p {
-        text-decoration: none; }
-      .container .todo-list .task.progress-task .edit-btn {
-        cursor: pointer;
-        color: #A4A4A4; }
-        .container .todo-list .task.progress-task .edit-btn:hover {
-          color: #5882FA; }
-      .container .todo-list .task.progress-task .done-icon {
-        background-image: url("../images/done-faded.png"); }
-      .container .todo-list .task.progress-task .done-icon:hover {
-        background-image: url("../images/done-active.png"); }
-      .container .todo-list .task.done-task p {
-        text-decoration: line-through; }
-      .container .todo-list .task.done-task .edit-btn {
-        cursor: not-allowed; }
-        .container .todo-list .task.done-task .edit-btn:hover {
-          color: #A4A4A4; }
-      .container .todo-list .task.done-task .done-icon {
-        background-image: url("../images/done-active.png"); }
-      .container .todo-list .task.done-task .done-icon:hover {
-        background-image: url("../images/done-faded.png"); }
-      .container .todo-list .task * {
-        -webkit-box-sizing: border-box;
-        -moz-box-sizing: border-box;
-        box-sizing: border-box; }
-      .container .todo-list .task p {
-        margin: 0;
-        width: 60%;
-        float: left;
-        overflow-x: auto;
-        font-size: 24px; }
-      .container .todo-list .task .edit-btn,
-      .container .todo-list .task .remove-btn {
-        color: #A4A4A4;
-        cursor: pointer;
-        background: none;
-        border: none;
-        float: left;
-        transition: color .4s;
-        font-size: 18px; }
-        .container .todo-list .task .edit-btn:hover,
-        .container .todo-list .task .remove-btn:hover {
-          color: #5882FA; }
-        .container .todo-list .task .edit-btn:active, .container .todo-list .task .edit-btn:focus,
-        .container .todo-list .task .remove-btn:active,
-        .container .todo-list .task .remove-btn:focus {
-          outline: none; }
-      .container .todo-list .task .edit-btn {
-        padding: 5px 0 0 40px; }
-      .container .todo-list .task .remove-btn {
-        font-weight: bold;
-        font-size: 24px;
-        padding: 1px 0 0 35px; }
-      .container .todo-list .task .done-icon {
-        float: left;
-        width: 5%;
-        cursor: pointer;
-        margin-left: 10px;
-        margin-right: 20px;
-        margin-top: 3px;
-        background-position: center center;
-        background-repeat: no-repeat;
-        background-size: cover;
-        transition: background .4s; }
-        .container .todo-list .task .done-icon:before {
-          content: '';
-          display: block;
-          width: 100%;
-          padding-top: 100%; }
-  .container .edit {
-    display: none;
-    position: absolute;
-    background: #eee;
-    border: 1px solid #aaa;
-    top: 10%;
-    width: 50%;
-    margin: 0 calc(25% - 40px);
-    padding: 0 40px 40px;
-    -webkit-box-shadow: 0 0 100px #333;
-    -moz-box-shadow: 0 0 100px #333;
-    box-shadow: 0 0 100px #333;
-    z-index: 101; }
-    .container .edit.active {
-      display: block; }
-    .container .edit .edit-input {
-      padding: 10px 15px;
-      font-size: 20px; }
-      .container .edit .edit-input:focus {
-        outline: none; }
-    .container .edit h4 {
-      margin: 0;
-      font-size: 22px;
-      font-weight: normal;
-      padding: 30px 0 20px; }
-    .container .edit .save-btn {
-      color: white;
-      border: 1px solid lightblue;
-      background: #5882FA;
-      font-size: 20px;
-      transition: background .4s;
-      padding: 11px 15px; }
-      .container .edit .save-btn:focus {
-        outline: none; }
-      .container .edit .save-btn:hover {
-        cursor: pointer;
-        background: #819FF7; }
-    .container .edit .close-btn {
-      position: absolute;
-      font-size: 24px;
-      font-weight: bold;
-      color: #aaa;
-      top: 10px;
-      right: 10px;
-      border: none;
+    .todo .todo-list .task.progress-task p {
+      text-decoration: none; }
+    .todo .todo-list .task.progress-task .edit-btn {
       cursor: pointer;
-      background: none; }
-      .container .edit .close-btn:hover {
-        color: #ccc; }
-  .container .overlay {
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    z-index: 100;
-    background: #333;
-    opacity: 0.5;
-    display: none; }
-    .container .overlay.active {
-      display: block; }
+      color: #a4a4a4; }
+      .todo .todo-list .task.progress-task .edit-btn:hover {
+        color: #2d89ef; }
+    .todo .todo-list .task.progress-task .done-icon {
+      background-image: url("../images/done-faded.png"); }
+    .todo .todo-list .task.progress-task .done-icon:hover {
+      background-image: url("../images/done-active.png"); }
+    .todo .todo-list .task.done-task p {
+      text-decoration: line-through; }
+    .todo .todo-list .task.done-task .edit-btn {
+      cursor: not-allowed; }
+      .todo .todo-list .task.done-task .edit-btn:hover {
+        color: #a4a4a4; }
+    .todo .todo-list .task.done-task .done-icon {
+      background-image: url("../images/done-active.png"); }
+    .todo .todo-list .task.done-task .done-icon:hover {
+      background-image: url("../images/done-faded.png"); }
+    .todo .todo-list .task * {
+      -webkit-box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      box-sizing: border-box; }
+    .todo .todo-list .task p {
+      margin: 0;
+      width: 60%;
+      float: left;
+      overflow-x: auto;
+      font-size: 24px; }
+    .todo .todo-list .task .edit-btn,
+    .todo .todo-list .task .remove-btn {
+      color: #A4A4A4;
+      cursor: pointer;
+      background: none;
+      border: none;
+      float: left;
+      transition: color .4s;
+      font-size: 18px; }
+      .todo .todo-list .task .edit-btn:hover,
+      .todo .todo-list .task .remove-btn:hover {
+        color: #5882FA; }
+      .todo .todo-list .task .edit-btn:active, .todo .todo-list .task .edit-btn:focus,
+      .todo .todo-list .task .remove-btn:active,
+      .todo .todo-list .task .remove-btn:focus {
+        outline: none; }
+    .todo .todo-list .task .edit-btn {
+      padding: 5px 0 0 40px; }
+    .todo .todo-list .task .remove-btn {
+      font-weight: bold;
+      font-size: 24px;
+      padding: 1px 0 0 35px; }
+    .todo .todo-list .task .done-icon {
+      float: left;
+      width: 5%;
+      cursor: pointer;
+      margin-left: 10px;
+      margin-right: 20px;
+      margin-top: 3px;
+      background-position: center center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      transition: background .4s; }
+      .todo .todo-list .task .done-icon:before {
+        content: '';
+        display: block;
+        width: 100%;
+        padding-top: 100%; }
+
+.todo .edit {
+  display: none;
+  position: absolute;
+  background: #eee;
+  border: 1px solid #aaa;
+  font-size: 0;
+  top: 10%;
+  width: 50%;
+  margin: 0 calc(25% - 40px);
+  padding: 0 40px 40px;
+  -webkit-box-shadow: 0 0 100px #1d1d1d;
+  -moz-box-shadow: 0 0 100px #1d1d1d;
+  box-shadow: 0 0 100px #1d1d1d;
+  z-index: 101; }
+  .todo .edit.active {
+    display: block; }
+  .todo .edit .edit-input {
+    padding: 10px 15px;
+    font-size: 20px; }
+    .todo .edit .edit-input:focus {
+      outline: none; }
+  .todo .edit h4 {
+    margin: 0;
+    font-size: 22px;
+    font-weight: normal;
+    padding: 30px 0 20px; }
+  .todo .edit .save-btn {
+    color: #eff4ff;
+    background: #2d89ef;
+    border: 1px solid #2d89ef;
+    font-size: 20px;
+    transition: background .4s, border .4s;
+    padding: 11px 15px; }
+    .todo .edit .save-btn:focus {
+      outline: none; }
+    .todo .edit .save-btn:hover {
+      background: #2b5797;
+      border: 1px solid #2b5797;
+      cursor: pointer; }
+  .todo .edit .close-btn {
+    position: absolute;
+    font-size: 24px;
+    font-weight: bold;
+    color: #aaa;
+    top: 10px;
+    right: 10px;
+    border: none;
+    cursor: pointer;
+    background: none;
+    transition: color .4s; }
+    .todo .edit .close-btn:hover {
+      color: #2d89ef; }
+
+.todo .overlay {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  background: #1d1d1d;
+  opacity: 0.5;
+  display: none; }
+  .todo .overlay.active {
+    display: block; }
